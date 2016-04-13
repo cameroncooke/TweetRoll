@@ -1,5 +1,5 @@
 # TweetRoll
-Demo project using AsyncDisplayKit
+Demo project using AsyncDisplayKit that connects to Twitter Rest API and pulls down Tweets that contain images and displays them using ASNetworkImageNodes.
 
 ##License
 Copyright (c) 2016. [Cameron Cooke](https://twitter.com/camsoft2000)
