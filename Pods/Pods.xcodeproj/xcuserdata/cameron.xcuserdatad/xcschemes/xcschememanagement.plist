@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-TweetRoll-AsyncDisplayKit.xcscheme</key>
+		<key>AsyncDisplayKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>27F003EB39CA1156DB810C7E</key>
+		<key>22D9C6224D0394AEF5BE43F3EFBEDE43</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3F4967375D56BC404E4879A9</key>
+		<key>9D97D013947503CEDB112F7A71C1B65B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

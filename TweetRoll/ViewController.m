@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "CCTwitterClient.h"
 #import "CCTweet.h"
+#import "CCCollectionViewCell.h"
 #import <TwitterKit/TwitterKit.h>
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
@@ -16,11 +17,13 @@
 static NSString *const CCTweetCellIdentifier = @"MyCell";
 
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, ASImageCacheProtocol, ASNetworkImageNodeDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) TWTRLogInButton *logInButton;
 @property (strong, nonatomic) CCTwitterClient *twitterClient;
 @property (strong, nonatomic) NSArray *tweets;
+@property (strong, nonatomic) ASBasicImageDownloader *basicDownloader;
+@property (strong, nonatomic) NSMutableDictionary *memoryCache;
 @end
 
 
@@ -32,6 +35,8 @@ static NSString *const CCTweetCellIdentifier = @"MyCell";
     self = [super initWithCoder:aDecoder];
     if (self) {
         _twitterClient = [CCTwitterClient new];
+        _memoryCache = [@{} mutableCopy];
+        _basicDownloader = [ASBasicImageDownloader new];
     }
     return self;
 }
@@ -60,10 +65,42 @@ static NSString *const CCTweetCellIdentifier = @"MyCell";
 
 - (void)getTweets
 {
-    [self.twitterClient fetchImagesTweetsMatchingKeyword:@"Car" onSuccess:^(NSArray *tweets) {
+    [self.twitterClient fetchImageTweetsWithQueryString:@"from:EarthPix" onSuccess:^(NSArray *tweets) {
+        
         self.tweets = tweets;
         [self.collectionView reloadData];
     } onError:nil];
+}
+
+
+# pragma mark -
+# pragma mark Caching
+
+- (NSString *)cacheKeyForURL:(NSURL *)url
+{
+    return [url absoluteString];
+}
+
+
+- (void)setCacheImage:(UIImage *)image forKey:(NSString *)key
+{
+    if (image == nil || key == nil) {
+        NSLog(@"Failed to set cache image as object or key was nil.");
+        return;
+    }
+    
+    [self.memoryCache setObject:image forKey:key];
+}
+
+
+- (UIImage *)cachedImageForKey:(NSString *)key
+{
+    if (key == nil) {
+        NSLog(@"Failed to retrieve cache item for key '%@'", key);
+        return nil;
+    }
+    
+    return [self.memoryCache objectForKey:key];
 }
 
 
@@ -78,26 +115,61 @@ static NSString *const CCTweetCellIdentifier = @"MyCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CCTweetCellIdentifier forIndexPath:indexPath];
+    CCCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CCTweetCellIdentifier forIndexPath:indexPath];
     
-    ASNetworkImageNode *imageNode;
-    if ((imageNode = cell.contentView.subviews.firstObject) == nil) {
-        [imageNode removeFromSupernode];
+    if (cell.imageNode == nil) {
+        cell.imageNode = [[ASNetworkImageNode alloc] initWithCache:self downloader:self.basicDownloader];
+        cell.imageNode.delegate = self;
+        cell.imageNode.frame = cell.contentView.bounds;
+        [cell.contentView insertSubview:cell.imageNode.view atIndex:0];
     }
-    
-    imageNode = [[ASNetworkImageNode alloc] init];
-    imageNode.frame = cell.contentView.bounds;
-    [cell.contentView insertSubview:imageNode.view atIndex:0];
     
     // load URL if applicable
     CCTweet *tweet = self.tweets[indexPath.item];
     CCTweetMedia *media  = tweet.media.firstObject;
     if (media != nil) {
         NSURL *url = [NSURL URLWithString:media.url];
-        [imageNode setURL:url resetToDefault:YES];
+        [cell.imageNode setURL:url resetToDefault:YES];
+    } else {
+        [cell.imageNode setURL:nil];
     }
     
     return cell;
 }
+
+
+# pragma mark -
+# pragma mark ASImageCacheProtocol
+
+- (void)fetchCachedImageWithURL:(NSURL *)URL callbackQueue:(dispatch_queue_t)callbackQueue completion:(void (^)(CGImageRef))completion
+{
+    if (URL == nil) {
+        completion(nil);
+        return;
+    }
+    
+    NSString *key = [self cacheKeyForURL:URL];
+    UIImage *image = [self cachedImageForKey:key];
+    if (image == nil) {
+        completion(nil);
+        return;
+    }
+    
+    // return image from cache
+    dispatch_async(callbackQueue ?: dispatch_get_main_queue(), ^{
+        completion(image.CGImage);
+    });
+}
+
+
+# pragma mark -
+# pragma mark ASNetworkImageNodeDelegate
+
+- (void)imageNode:(ASNetworkImageNode *)imageNode didLoadImage:(UIImage *)image
+{
+    NSString *key = [self cacheKeyForURL:imageNode.URL];
+    [self setCacheImage:image forKey:key];
+}
+
 
 @end

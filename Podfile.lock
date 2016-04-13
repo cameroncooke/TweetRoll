@@ -1,12 +1,23 @@
 PODS:
   - AsyncDisplayKit (1.1.1):
-    - AsyncDisplayKit/ASDealloc2MainObject
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.1.1)
   - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
+  - Fabric (1.6.7)
+  - TwitterCore (2.0.2):
+    - Fabric
+  - TwitterKit (2.0.2):
+    - TwitterCore (= 2.0.2)
 
 DEPENDENCIES:
   - AsyncDisplayKit
+  - Fabric
+  - TwitterCore
+  - TwitterKit
 
 SPEC CHECKSUMS:
-  AsyncDisplayKit: 897b28140c6c73fbe8d6168f19ce7cbd87c94ee8
+  AsyncDisplayKit: 2c355970d1aabe00608211d9a50e35b7a5dc0ae4
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  TwitterCore: 0f44d8980a6879d5205dcb4e010d15e643e56fa0
+  TwitterKit: c4e40f289a3d7cc9fab9f241edd7502385468b65
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.39.0

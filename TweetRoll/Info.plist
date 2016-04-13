@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.cameroncooke.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -30,9 +30,9 @@
 				<key>KitInfo</key>
 				<dict>
 					<key>consumerKey</key>
-					<string>rBApQQgDHKWSn8bhCQpFqDD0R</string>
+					<string>kSsGVkHYevXgresjnG3v4eD54</string>
 					<key>consumerSecret</key>
-					<string>VHZv7pCqTh9tAuYMD9aEX5dXIHzueiqV09TViSbJbVaWfrmb59</string>
+					<string>0baRm6oftgbA28lQG2OU7cyVoeBwR3dXUIfTq6trRyRyuNfoya</string>
 				</dict>
 				<key>KitName</key>
 				<string>Twitter</string>
@@ -53,5 +53,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>

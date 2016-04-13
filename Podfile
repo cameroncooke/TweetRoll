@@ -4,6 +4,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'TweetRoll' do
 pod 'AsyncDisplayKit'
+pod 'Fabric'
+pod 'TwitterKit'
+pod 'TwitterCore'
 end
 
 target 'TweetRollTests' do

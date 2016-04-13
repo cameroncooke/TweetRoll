@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E00E6321ABDD8AA003BCAAA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E00E62F1ABDD8A9003BCAAA /* Fabric.framework */; };
-		7E00E6351ABDDBD4003BCAAA /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E00E6341ABDDBD4003BCAAA /* TwitterKit.framework */; };
-		7E00E6371ABDDBE4003BCAAA /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E00E6361ABDDBE4003BCAAA /* TwitterKitResources.bundle */; };
-		7E00E63E1ABDDE95003BCAAA /* CCTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E00E63D1ABDDE95003BCAAA /* CCTwitterClient.m */; };
-		7E00E6421ABDE834003BCAAA /* CCTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E00E6411ABDE834003BCAAA /* CCTweet.m */; };
-		7E00E6451ABDEB92003BCAAA /* CCTweetMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E00E6441ABDEB92003BCAAA /* CCTweetMedia.m */; };
 		7E712B421ABDCE5200EC6D30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E712B411ABDCE5200EC6D30 /* main.m */; };
 		7E712B451ABDCE5200EC6D30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E712B441ABDCE5200EC6D30 /* AppDelegate.m */; };
 		7E712B481ABDCE5200EC6D30 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E712B471ABDCE5200EC6D30 /* ViewController.m */; };
@@ -24,6 +18,10 @@
 		7E712B721ABDD4E100EC6D30 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E712B711ABDD4E100EC6D30 /* CoreData.framework */; };
 		7E712B741ABDD4EC00EC6D30 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E712B731ABDD4EC00EC6D30 /* Social.framework */; };
 		7E712B761ABDD51800EC6D30 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E712B751ABDD51800EC6D30 /* Accounts.framework */; };
+		7ED8E0C61CBEECE3003A78C2 /* CCCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E0C51CBEECE3003A78C2 /* CCCollectionViewCell.m */; };
+		7EF977F41CBE864A00210E5E /* CCTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E00E63D1ABDDE95003BCAAA /* CCTwitterClient.m */; };
+		7EF977F51CBE864E00210E5E /* CCTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E00E6411ABDE834003BCAAA /* CCTweet.m */; };
+		7EF977F61CBE865000210E5E /* CCTweetMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E00E6441ABDEB92003BCAAA /* CCTweetMedia.m */; };
 		D217A571AEE9838372DC9C56 /* libPods-TweetRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F08AE5F25D97C365384B6E12 /* libPods-TweetRoll.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +63,10 @@
 		7E712B711ABDD4E100EC6D30 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7E712B731ABDD4EC00EC6D30 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		7E712B751ABDD51800EC6D30 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		7ED8E0C41CBEECE3003A78C2 /* CCCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCollectionViewCell.h; sourceTree = "<group>"; };
+		7ED8E0C51CBEECE3003A78C2 /* CCCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCollectionViewCell.m; sourceTree = "<group>"; };
+		7EF977EF1CBE805D00210E5E /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
+		7EF977F01CBE805D00210E5E /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		956276059CE13A0FA05120BF /* Pods-TweetRoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRoll.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetRoll/Pods-TweetRoll.debug.xcconfig"; sourceTree = "<group>"; };
 		F08AE5F25D97C365384B6E12 /* libPods-TweetRoll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRoll.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,8 +76,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E00E6351ABDDBD4003BCAAA /* TwitterKit.framework in Frameworks */,
-				7E00E6321ABDD8AA003BCAAA /* Fabric.framework in Frameworks */,
 				7E712B761ABDD51800EC6D30 /* Accounts.framework in Frameworks */,
 				7E712B741ABDD4EC00EC6D30 /* Social.framework in Frameworks */,
 				7E712B721ABDD4E100EC6D30 /* CoreData.framework in Frameworks */,
@@ -115,6 +115,7 @@
 		7E00E6391ABDDE4E003BCAAA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7ED8E0C71CBEECE6003A78C2 /* Views */,
 				7E712B461ABDCE5200EC6D30 /* ViewController.h */,
 				7E712B471ABDCE5200EC6D30 /* ViewController.m */,
 			);
@@ -205,6 +206,8 @@
 		7E712B6E1ABDD3EF00EC6D30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7EF977EF1CBE805D00210E5E /* DigitsKit.framework */,
+				7EF977F01CBE805D00210E5E /* TwitterCore.framework */,
 				7E00E6361ABDDBE4003BCAAA /* TwitterKitResources.bundle */,
 				7E00E6341ABDDBD4003BCAAA /* TwitterKit.framework */,
 				7E00E62F1ABDD8A9003BCAAA /* Fabric.framework */,
@@ -215,6 +218,15 @@
 				F08AE5F25D97C365384B6E12 /* libPods-TweetRoll.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7ED8E0C71CBEECE6003A78C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7ED8E0C41CBEECE3003A78C2 /* CCCollectionViewCell.h */,
+				7ED8E0C51CBEECE3003A78C2 /* CCCollectionViewCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +241,8 @@
 				7E712B391ABDCE5200EC6D30 /* Frameworks */,
 				7E712B3A1ABDCE5200EC6D30 /* Resources */,
 				FF645D9E61398700D3426732 /* Copy Pods Resources */,
-				7E00E62C1ABDD897003BCAAA /* ShellScript */,
+				D06A7EFBEB565539C8B61294 /* Embed Pods Frameworks */,
+				7EF977F31CBE828C00210E5E /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -265,7 +278,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CC;
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Cameron Cooke";
 				TargetAttributes = {
 					7E712B3B1ABDCE5200EC6D30 = {
@@ -301,7 +314,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E00E6371ABDDBE4003BCAAA /* TwitterKitResources.bundle in Resources */,
 				7E712B4B1ABDCE5200EC6D30 /* Main.storyboard in Resources */,
 				7E712B501ABDCE5200EC6D30 /* LaunchScreen.xib in Resources */,
 				7E712B4D1ABDCE5200EC6D30 /* Images.xcassets in Resources */,
@@ -318,18 +330,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7E00E62C1ABDD897003BCAAA /* ShellScript */ = {
+		7EF977F31CBE828C00210E5E /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Fabric;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run a986bea7898edb1c501c7be2756b52b3de2c0422 b78ad9d6894bcad0570ac2d3580dac0b2538d0b796d475d82fa5688b2e5e93f2";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" a986bea7898edb1c501c7be2756b52b3de2c0422 b78ad9d6894bcad0570ac2d3580dac0b2538d0b796d475d82fa5688b2e5e93f2";
 		};
 		B9BA695DE01CF636BF262C7F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -344,6 +357,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D06A7EFBEB565539C8B61294 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetRoll/Pods-TweetRoll-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF645D9E61398700D3426732 /* Copy Pods Resources */ = {
@@ -368,12 +396,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E00E63E1ABDDE95003BCAAA /* CCTwitterClient.m in Sources */,
+				7EF977F41CBE864A00210E5E /* CCTwitterClient.m in Sources */,
+				7ED8E0C61CBEECE3003A78C2 /* CCCollectionViewCell.m in Sources */,
 				7E712B481ABDCE5200EC6D30 /* ViewController.m in Sources */,
 				7E712B451ABDCE5200EC6D30 /* AppDelegate.m in Sources */,
 				7E712B421ABDCE5200EC6D30 /* main.m in Sources */,
-				7E00E6451ABDEB92003BCAAA /* CCTweetMedia.m in Sources */,
-				7E00E6421ABDE834003BCAAA /* CCTweet.m in Sources */,
+				7EF977F61CBE865000210E5E /* CCTweetMedia.m in Sources */,
+				7EF977F51CBE864E00210E5E /* CCTweet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +464,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -502,6 +532,7 @@
 				);
 				INFOPLIST_FILE = TweetRoll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cameroncooke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -517,6 +548,7 @@
 				);
 				INFOPLIST_FILE = TweetRoll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cameroncooke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -535,6 +567,7 @@
 				);
 				INFOPLIST_FILE = TweetRollTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.brightec.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TweetRoll.app/TweetRoll";
 			};
@@ -550,6 +583,7 @@
 				);
 				INFOPLIST_FILE = TweetRollTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.brightec.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TweetRoll.app/TweetRoll";
 			};

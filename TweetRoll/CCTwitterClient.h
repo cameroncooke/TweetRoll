@@ -15,6 +15,6 @@ typedef void (^CCTwitterClientOnError)(NSError *error);
 
 @interface CCTwitterClient : NSObject
 
-- (void)fetchImagesTweetsMatchingKeyword:(NSString *)keyword onSuccess:(CCTwitterClientOnCompletion)onSuccess onError:(CCTwitterClientOnError)onError;
+- (void)fetchImageTweetsWithQueryString:(NSString *)queryString onSuccess:(CCTwitterClientOnCompletion)onSuccess onError:(CCTwitterClientOnError)onError;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Fabric/Fabric.h>
+#import <Fabric/Fabric.h>
 #import <TwitterKit/TwitterKit.h>
 
 
@@ -20,7 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [Fabric with:@[TwitterKit]];
+    [Fabric with:@[[Twitter class]]];
     
     return YES;
 }

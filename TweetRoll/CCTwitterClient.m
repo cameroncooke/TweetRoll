@@ -7,41 +7,69 @@
 //
 
 #import "CCTwitterClient.h"
-#import <TwitterKit/TwitterKit.h>
+#import <TwitterKit/Twitter.h>
 #import "CCTweet.h"
 
 
-static NSString *CCBaseURL = @"https://api.twitter.com/1.1/";
-static NSString *const CCSearchEndPoint = @"search/tweets.json";
+static NSString *kBaseURL = @"https://api.twitter.com/1.1/";
+static NSString *const kSearchEndPoint = @"search/tweets.json";
+
+
+@interface CCTwitterClient ()
+@property (nonatomic, strong) TWTRAPIClient *client;
+@end
 
 
 @implementation CCTwitterClient
 
 
-- (void)fetchImagesTweetsMatchingKeyword:(NSString *)keyword onSuccess:(CCTwitterClientOnCompletion)onSuccess onError:(CCTwitterClientOnError)onError
+- (TWTRAPIClient *)client
 {
-    NSString *endpoint = [CCBaseURL stringByAppendingString:CCSearchEndPoint];
+    /*!
+     * lazily load client - this is important because
+     * the client initializer will return nil if the
+     * twitter login session is unavailable (i.e. user
+     * has not logged in yet).
+     */
+    if (_client == nil) {
+        _client = [[TWTRAPIClient alloc] init];
+    }
     
-    NSDictionary *params = @{@"q": keyword,
-                             @"result_type": @"recent",
-                             @"count": @"20",
+    return _client;
+}
+
+
+- (void)fetchImageTweetsWithQueryString:(NSString *)queryString onSuccess:(CCTwitterClientOnCompletion)onSuccess onError:(CCTwitterClientOnError)onError
+{
+    NSString *endpoint = [kBaseURL stringByAppendingPathComponent:kSearchEndPoint];
+    
+    NSDictionary *params = @{@"q": [queryString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                             @"result_type": @"mixed",
+                             @"count": @"100",
                              @"include_entities": @"true"};
     
     NSError *clientError;
-    NSURLRequest *request = [[[Twitter sharedInstance] APIClient] URLRequestWithMethod:@"GET"
-                                                                                   URL:endpoint
-                                                                            parameters:params
-                                                                                 error:&clientError];
+    NSURLRequest *request = [self.client URLRequestWithMethod:@"GET"
+                                                          URL:endpoint
+                                                   parameters:params
+                                                        error:&clientError];
     
     if (request) {
         
-        [[[Twitter sharedInstance] APIClient] sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [self.client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             
              if (data) {
                  // handle the response data e.g.
                 NSError *jsonError;
                  NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                  NSArray *tweets = [CCTweet tweetsWithJSONArray:json[@"statuses"]];
+                 
+                 // filter out tweets that don't have media
+                 tweets = [tweets filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CCTweet * _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+                     
+                     return evaluatedObject.media.count > 0;
+                     
+                 }]];
                  
                  onSuccess(tweets);
              }

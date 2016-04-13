@@ -16,8 +16,9 @@
 {
     NSMutableArray *tmp = [@[] mutableCopy];
     for (NSDictionary *node in array) {
+        
         CCTweet *tweet = [[CCTweet alloc] initWithJSONDictionary:node];
-        [tweet mapExtendedFieldsWithJsonDictionary:node];
+        [tweet mapExtendedFieldsWithJsonDictionary:node];        
         [tmp addObject:tweet];
     }
     return tmp;
